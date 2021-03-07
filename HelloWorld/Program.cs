@@ -1,4 +1,5 @@
 ﻿using System;
+using HelloWorld.Math;
 
 namespace HelloWorld
 {
@@ -30,6 +31,15 @@ namespace HelloWorld
             Console.WriteLine(name);
 
             Console.WriteLine("{0} {1}", int.MinValue, int.MaxValue);
+
+            // CLASSES
+            //Calculator calc = new Calculator();
+            //int result = calc.Add(1, 2);
+            double addRes = Calculator.Add(1, 2);
+            Console.WriteLine("add result -> {0}", addRes);
+
+            double multiplyRes = Calculator.Multiply(3, 4);
+            Console.WriteLine("multiply result -> {0}", multiplyRes);
         }
     }
 }
