@@ -1,5 +1,4 @@
 ﻿using System;
-using HelloWorld.Math;
 
 namespace HelloWorld
 {
@@ -7,55 +6,77 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            // A VARIABLE SHOULD BE INITIALIZED BEFORE USAGE
-            //byte number;
-            byte number = 255;
+            // exercise 1
+            //var count = 0;
+            //for (int i = 1; i <= 100; i++)
+            //{
+            //    if (i % 3 == 0)
+            //    {
+            //        Console.WriteLine(i);
+            //        count++;
+            //    }
+            //}
+            //Console.WriteLine("count: " + count);
 
-            // REALS NUMBERS ARE TREATED AS DOUBLE BY DEFAULT
-            var d = 20.95;
-            float f = 20.95f;
+            // exercise 2
+            //var sum = 0;
+            //var keepAsking = true;
+            //while (keepAsking)
+            //{
+            //    Console.Write("enter a number: ");
+            //    var typedVal = Console.ReadLine();
+            //    if (typedVal == "ok")
+            //    {
+            //        keepAsking = false;
+            //    } 
+            //    else
+            //    {
+            //        sum += int.Parse(typedVal);
+            //        Console.WriteLine("sum: " + sum);
+            //    }
+            //}
 
-            // LET THE C# COMPILER DETECT THE DATA TYPE FOR EACH VARIABLE
-            var x = 255;
-            var y = 20.95f;
+            // exercise 3
+            //Console.Write("enter a number: ");
+            //var typedVal = Console.ReadLine();
+            //var val = int.Parse(typedVal);
+            //var res = val;
+            //for (int i = val - 1; i > 1; i--)
+            //{
+            //    res = res * i;
+            //}
+            //Console.Write("{0}! = {1}", val, res);
 
-            // DIFFERENT QUOTATION MARKS FOR EACH TYPE
-            char letter = 'a';
-            string name = "Victor";
-
-            // ARRAY
-            //int[] someNumbers = new int[];  WRONG
-            int[] someNumbers1 = new int[] { 1, 2, 3 };
-            int[] someNumbers2 = new int[3];
-
-            Console.WriteLine(number);
-            Console.WriteLine(f);
-            Console.WriteLine(x);
-            Console.WriteLine(y);
-            Console.WriteLine(letter);
-            Console.WriteLine(name);
-
-            Console.WriteLine("{0} {1}", int.MinValue, int.MaxValue);
-
-            // CLASSES
-            //Calculator calc = new Calculator();
-            //int result = calc.Add(1, 2);
-            double addRes = Calculator.Add(1, 2);
-            Console.WriteLine("add result -> {0}", addRes);
-
-            double multiplyRes = Calculator.Multiply(3, 4);
-            Console.WriteLine("multiply result -> {0}", multiplyRes);
-
-            // ENUM
-            var questionLevel = QuestionLevelEnum.INTERMEDIATE;
-            Console.WriteLine("enum value -> {0}", (int) questionLevel);
-
-            var questionLevelId = 3;
-            Console.WriteLine("enum entry -> {0}", (QuestionLevelEnum) questionLevelId);
-
-            var questionLevelName = "BEGINNER";
-            var level = (QuestionLevelEnum) Enum.Parse(typeof(QuestionLevelEnum), questionLevelName);
-            Console.WriteLine("enum entry got from parse -> {0}", level);
+            // exercise 4
+            var random = new Random();
+            var secretNumber = random.Next(1, 10);
+            //Console.WriteLine("Secret number: " + secretNumber);
+            Console.WriteLine("You have 4 chances to guess the number.");
+            Console.Write("First try: ");
+            var wasNumberGuessed = false;
+            var i = 0;
+            while (i < 4 && !wasNumberGuessed)
+            {
+                var typedVal = Console.ReadLine();
+                var val = int.Parse(typedVal);
+                if (val == secretNumber)
+                {
+                    Console.WriteLine("You won.");
+                    wasNumberGuessed = true;
+                } 
+                else
+                {
+                    if (i < 3)
+                    {
+                        Console.Write("Try again: ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You lost.");
+                    }
+                }
+                i++;
+            }
         }
     }
 }
