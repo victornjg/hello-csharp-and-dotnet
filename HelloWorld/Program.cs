@@ -1,5 +1,4 @@
 ﻿using System;
-using HelloWorld.Math;
 
 namespace HelloWorld
 {
@@ -7,55 +6,49 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            // A VARIABLE SHOULD BE INITIALIZED BEFORE USAGE
-            //byte number;
-            byte number = 255;
+            // DATE TIME
+            //var dateTime = new DateTime(2021, 7, 20);
+            //var now = DateTime.Now;
+            //var today = DateTime.Today;
 
-            // REALS NUMBERS ARE TREATED AS DOUBLE BY DEFAULT
-            var d = 20.95;
-            float f = 20.95f;
+            //Console.WriteLine(now.Hour);
+            //Console.WriteLine(now.Minute);
 
-            // LET THE C# COMPILER DETECT THE DATA TYPE FOR EACH VARIABLE
-            var x = 255;
-            var y = 20.95f;
+            //var tomorrow = now.AddDays(1);
+            //var yesterday = now.AddDays(-1);
 
-            // DIFFERENT QUOTATION MARKS FOR EACH TYPE
-            char letter = 'a';
-            string name = "Victor";
+            //Console.WriteLine("Tomorrow: " + tomorrow);
+            //Console.WriteLine("Yesterday: " + yesterday);
 
-            // ARRAY
-            //int[] someNumbers = new int[];  WRONG
-            int[] someNumbers1 = new int[] { 1, 2, 3 };
-            int[] someNumbers2 = new int[3];
+            //Console.WriteLine(now.ToLongDateString());
+            //Console.WriteLine(now.ToShortDateString());
+            //Console.WriteLine(now.ToLongTimeString());
+            //Console.WriteLine(now.ToShortTimeString());
+            //Console.WriteLine(now.ToString());
+            //Console.WriteLine(now);
+            //Console.WriteLine(now.ToString("yyyy-MM-dd HH:mm"));
 
-            Console.WriteLine(number);
-            Console.WriteLine(f);
-            Console.WriteLine(x);
-            Console.WriteLine(y);
-            Console.WriteLine(letter);
-            Console.WriteLine(name);
+            // TIME SPAN
+            var timeSpan = new TimeSpan(1, 2, 3);
 
-            Console.WriteLine("{0} {1}", int.MinValue, int.MaxValue);
+            var timeSpan1 = new TimeSpan(1, 0, 0);
+            var timeSpan2 = TimeSpan.FromHours(1);
 
-            // CLASSES
-            //Calculator calc = new Calculator();
-            //int result = calc.Add(1, 2);
-            double addRes = Calculator.Add(1, 2);
-            Console.WriteLine("add result -> {0}", addRes);
+            var start = DateTime.Now;
+            var end = DateTime.Now.AddMinutes(2);
+            var duration = end - start;
+            Console.WriteLine("Duration: " + duration);
 
-            double multiplyRes = Calculator.Multiply(3, 4);
-            Console.WriteLine("multiply result -> {0}", multiplyRes);
+            Console.WriteLine("Minutes: " + timeSpan.Minutes);
+            Console.WriteLine("Total Minutes: " + timeSpan.TotalMinutes);
 
-            // ENUM
-            var questionLevel = QuestionLevelEnum.INTERMEDIATE;
-            Console.WriteLine("enum value -> {0}", (int) questionLevel);
+            Console.WriteLine("Add Example: " + timeSpan.Add(TimeSpan.FromMinutes(8)));
+            Console.WriteLine("Subtract Example: " + timeSpan.Subtract(TimeSpan.FromMinutes(2)));
 
-            var questionLevelId = 3;
-            Console.WriteLine("enum entry -> {0}", (QuestionLevelEnum) questionLevelId);
+            Console.WriteLine("ToString: " + timeSpan.ToString());
+            Console.WriteLine("ToString: " + timeSpan);
 
-            var questionLevelName = "BEGINNER";
-            var level = (QuestionLevelEnum) Enum.Parse(typeof(QuestionLevelEnum), questionLevelName);
-            Console.WriteLine("enum entry got from parse -> {0}", level);
+            Console.WriteLine("Parse: " + TimeSpan.Parse("01:02:03"));
         }
     }
 }
