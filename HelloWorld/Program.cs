@@ -1,5 +1,5 @@
 ﻿using System;
-using HelloWorld.Math;
+using System.IO;
 
 namespace HelloWorld
 {
@@ -7,55 +7,29 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            // A VARIABLE SHOULD BE INITIALIZED BEFORE USAGE
-            //byte number;
-            byte number = 255;
+            //var files = Directory.GetFiles(@"c:\Users\victo\source\repos\StoredProceduresApplication", "*.cshtml", SearchOption.AllDirectories);
+            //foreach (var file in files)
+            //{
+            //    Console.WriteLine(file);
+            //}
 
-            // REALS NUMBERS ARE TREATED AS DOUBLE BY DEFAULT
-            var d = 20.95;
-            float f = 20.95f;
+            // exercise 1
+            var text = File.ReadAllText("lorem-ipsum-text.txt");
+            Console.WriteLine(text);
+            var wordsQty = text.Split(" ").Length;
+            Console.WriteLine("Number of words: " + wordsQty);
 
-            // LET THE C# COMPILER DETECT THE DATA TYPE FOR EACH VARIABLE
-            var x = 255;
-            var y = 20.95f;
-
-            // DIFFERENT QUOTATION MARKS FOR EACH TYPE
-            char letter = 'a';
-            string name = "Victor";
-
-            // ARRAY
-            //int[] someNumbers = new int[];  WRONG
-            int[] someNumbers1 = new int[] { 1, 2, 3 };
-            int[] someNumbers2 = new int[3];
-
-            Console.WriteLine(number);
-            Console.WriteLine(f);
-            Console.WriteLine(x);
-            Console.WriteLine(y);
-            Console.WriteLine(letter);
-            Console.WriteLine(name);
-
-            Console.WriteLine("{0} {1}", int.MinValue, int.MaxValue);
-
-            // CLASSES
-            //Calculator calc = new Calculator();
-            //int result = calc.Add(1, 2);
-            double addRes = Calculator.Add(1, 2);
-            Console.WriteLine("add result -> {0}", addRes);
-
-            double multiplyRes = Calculator.Multiply(3, 4);
-            Console.WriteLine("multiply result -> {0}", multiplyRes);
-
-            // ENUM
-            var questionLevel = QuestionLevelEnum.INTERMEDIATE;
-            Console.WriteLine("enum value -> {0}", (int) questionLevel);
-
-            var questionLevelId = 3;
-            Console.WriteLine("enum entry -> {0}", (QuestionLevelEnum) questionLevelId);
-
-            var questionLevelName = "BEGINNER";
-            var level = (QuestionLevelEnum) Enum.Parse(typeof(QuestionLevelEnum), questionLevelName);
-            Console.WriteLine("enum entry got from parse -> {0}", level);
+            // exercise 2
+            var words = text.Split(" ");
+            var longestWord = words[0];
+            foreach (var word in words)
+            {
+                if (word.Length > longestWord.Length)
+                {
+                    longestWord = word;
+                }
+            }
+            Console.WriteLine("Longest word: " + longestWord);
         }
     }
 }
